@@ -5,7 +5,9 @@ public class Main {
         FakeDb db = new FakeDb();
         StudentParser parser = new StudentParser();
         StudentValidator validator = new StudentValidator();
-        OnboardingService svc = new OnboardingService(db, parser, validator);
+        StudentRecordFactory factory = new StudentRecordFactory(db);
+        StudentPrinter printer = new StudentPrinter(db);
+        OnboardingService svc = new OnboardingService(parser, validator,factory, printer);
 
         String raw =
             "name=Riya;email=riya@sst.edu;phone=9876543210;program=CSE";
