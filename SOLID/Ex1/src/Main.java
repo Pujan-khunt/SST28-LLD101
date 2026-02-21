@@ -6,8 +6,13 @@ public class Main {
         StudentParser parser = new StudentParser();
         StudentValidator validator = new StudentValidator();
         StudentRecordFactory factory = new StudentRecordFactory(db);
-        StudentPrinter printer = new StudentPrinter(db);
-        OnboardingService svc = new OnboardingService(parser, validator,factory, printer);
+        StudentPrinter printer = new DefaultPrinter(db);
+        OnboardingService svc = new OnboardingService(
+            parser,
+            validator,
+            factory,
+            printer
+        );
 
         String raw =
             "name=Riya;email=riya@sst.edu;phone=9876543210;program=CSE";

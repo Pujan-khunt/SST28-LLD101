@@ -30,6 +30,6 @@ public class OnboardingService {
             return;
         }
         StudentRecord studentRecord = factory.createStudent(kv);
-        printer.printStudent(studentRecord);
+        printer.print(studentRecord);
     }
 }
