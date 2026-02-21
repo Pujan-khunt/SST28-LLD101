@@ -1,8 +1,8 @@
 public class DefaultPrinter implements StudentPrinter {
 
-    private final FakeDb db;
+    private final DatabaseService db;
 
-    DefaultPrinter(FakeDb db) {
+    DefaultPrinter(DatabaseService db) {
         this.db = db;
     }
 

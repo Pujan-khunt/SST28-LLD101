@@ -2,9 +2,9 @@ import java.util.Map;
 
 public class StudentRecordFactory {
 
-    private final FakeDb db;
+    private final DatabaseService db;
 
-    StudentRecordFactory(FakeDb db) {
+    StudentRecordFactory(DatabaseService db) {
         this.db = db;
     }
 

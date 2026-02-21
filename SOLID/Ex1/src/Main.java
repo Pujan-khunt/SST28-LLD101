@@ -2,7 +2,7 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("=== Student Onboarding ===");
-        FakeDb db = new FakeDb();
+        DatabaseService db = new FakeDb();
         StudentParser parser = new StudentParser();
         StudentValidator validator = new StudentValidator();
         StudentRecordFactory factory = new StudentRecordFactory(db);
