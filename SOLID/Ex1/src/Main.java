@@ -7,15 +7,9 @@ public class Main {
         StudentValidator validator = new StudentValidator();
         StudentRecordFactory factory = new StudentRecordFactory(db);
         StudentPrinter printer = new DefaultPrinter(db);
-        OnboardingService svc = new OnboardingService(
-            parser,
-            validator,
-            factory,
-            printer
-        );
+        OnboardingService svc = new OnboardingService(parser, validator, factory, printer);
 
-        String raw =
-            "name=Riya;email=riya@sst.edu;phone=9876543210;program=CSE";
+        String raw = "name=Riya;email=riya@sst.edu;phone=9876543210;program=CSE";
         svc.registerFromRawInput(raw);
 
         System.out.println();

@@ -21,12 +21,6 @@ public class CafeteriaSystem {
     public void checkout(Customer customer, List<OrderLine> lines) {
         String invId = "INV-" + (++invoiceSeq);
 
-        double subtotal = calculateSubtotal(lines);
-        double taxPct = customer.taxPercent();
-        double tax = subtotal * (taxPct / 100.0);
-        double discountPct = customer.discountAmount(subtotal, lines.size());
-        double discount = subtotal * (discountPct / 100.0);
-        double total = subtotal + tax - discount;
 
         List<InvoiceItem> invoiceItems = new ArrayList<>();
         for (OrderLine line : lines) {
@@ -34,7 +28,9 @@ public class CafeteriaSystem {
             invoiceItems.add(new InvoiceItem(item.name, line.qty, line.qty * item.price));
         }
 
-        Invoice invoice = new Invoice(invId, invoiceItems, subtotal, tax, taxPct, discount, discountPct, total);
+        InvoiceCalculator calculator = new InvoiceCalculator();
+        Invoice invoice = calculator.calculate(customer, lines, invId, invoiceItems, menu);
+
         String printable = formatter.format(invoice);
         System.out.print(printable);
 
@@ -42,13 +38,4 @@ public class CafeteriaSystem {
         System.out.println("Saved invoice: " + invId + " (lines=" + store.countLines(invId) + ")");
     }
 
-    private double calculateSubtotal(List<OrderLine> lines) {
-        double subtotal = 0.0;
-        for (OrderLine l : lines) {
-            MenuItem item = menu.get(l.itemId);
-            double lineTotal = item.price * l.qty;
-            subtotal += lineTotal;
-        }
-        return subtotal;
-    }
 }
