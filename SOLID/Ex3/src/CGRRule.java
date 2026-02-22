@@ -6,7 +6,7 @@ public class CGRRule extends Rule {
 
     @Override
     boolean check() {
-        return profile.cgr >= 8.0;
+        return profile.cgr >= RuleInput.minCgr;
     }
 
 }

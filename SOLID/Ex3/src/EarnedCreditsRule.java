@@ -6,7 +6,7 @@ public class EarnedCreditsRule extends Rule {
 
     @Override
     boolean check() {
-        return profile.earnedCredits >= 20;
+        return profile.earnedCredits >= RuleInput.minCredits;
     }
 
 }

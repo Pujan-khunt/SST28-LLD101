@@ -6,7 +6,7 @@ public class AttendanceRule extends Rule {
 
     @Override
     boolean check() {
-        return profile.attendancePct >= 75;
+        return profile.attendancePct >= RuleInput.minAttendance;
     }
 
 }
