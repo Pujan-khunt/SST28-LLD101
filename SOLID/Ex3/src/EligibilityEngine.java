@@ -1,9 +1,11 @@
 import java.util.*;
 
 public class EligibilityEngine {
-    private final FakeEligibilityStore store;
+    private final EligibilityStore store;
 
-    public EligibilityEngine(FakeEligibilityStore store) { this.store = store; }
+    public EligibilityEngine(EligibilityStore store) {
+        this.store = store;
+    }
 
     public void runAndPrint(StudentProfile s) {
         ReportPrinter p = new ReportPrinter();
@@ -38,6 +40,7 @@ public class EligibilityEngine {
 class EligibilityEngineResult {
     public final String status;
     public final List<String> reasons;
+
     public EligibilityEngineResult(String status, List<String> reasons) {
         this.status = status;
         this.reasons = reasons;
