@@ -1,9 +1,16 @@
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CafeteriaSystem {
     private final Map<String, MenuItem> menu = new LinkedHashMap<>();
+    private final Formatter formatter;
     private final FileStore store = new FileStore();
     private int invoiceSeq = 1000;
+
+    public CafeteriaSystem(Formatter formatter) {
+        this.formatter = formatter;
+    }
 
     public void addToMenu(MenuItem i) {
         menu.put(i.id, i);
@@ -35,7 +42,7 @@ public class CafeteriaSystem {
         out.append(String.format("Discount: -%.2f\n", discount));
         out.append(String.format("TOTAL: %.2f\n", total));
 
-        String printable = InvoiceFormatter.identityFormat(out.toString());
+        String printable = formatter.format(out.toString());
         System.out.print(printable);
 
         store.save(invId, printable);
