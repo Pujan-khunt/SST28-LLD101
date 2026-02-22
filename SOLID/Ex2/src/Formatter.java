@@ -1,3 +1,3 @@
 public interface Formatter {
-    public String format(String raw);
+    public String format(Invoice invoice);
 }
